@@ -116,7 +116,7 @@ const ReceiptDownload = () => {
   return (
     <div className="container mt-5">
      
-      <div className="d-flex justify-content-between gap-3">
+      <div className="d-flex justify-content-between gap-3 align-items-center">
             <span className="fs-4 fw-bold">Download your installment Receipts</span>
             <button className="btn-main-orange">Register now</button>
         </div>

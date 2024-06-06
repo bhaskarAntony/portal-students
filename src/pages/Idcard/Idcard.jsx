@@ -50,7 +50,7 @@ const IDCard = () => {
 
   return (
     <div className='p-3 p-md-5'>
-        <div className="d-flex justify-content-between gap-3">
+        <div className="d-flex justify-content-between gap-3 align-items-center">
             <span className="fs-4 fw-bold">Generate your ID Card</span>
             <button className="btn-main-orange">Register now</button>
         </div>

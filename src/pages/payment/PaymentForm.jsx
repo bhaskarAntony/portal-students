@@ -29,7 +29,7 @@ const PaymentForm = () => {
 
   return (
    <div className="contaienr-fluid p-3 p-md-5">
-       <div className="d-flex justify-content-between">
+       <div className="d-flex justify-content-between align-items-center">
             <span className="fw-bold fs-4">Download Your installment receipt</span>
             <button className="btn-main-orange">Pay Installment</button>
         </div> 

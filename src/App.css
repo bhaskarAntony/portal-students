@@ -11,6 +11,7 @@
   font-size: 1.2rem;
   word-wrap: nowrap;
   white-space: nowrap;
+  text-decoration: none !important;
 
 }
 .btn-main-dark{

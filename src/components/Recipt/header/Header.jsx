@@ -1,5 +1,6 @@
 import React from 'react'
 import './style.css'
+import { Link } from 'react-router-dom'
 
 function Header() {
   return (
@@ -17,7 +18,7 @@ function Header() {
         </li>
        
         <li class="nav-item">
-          <a class="nav-link" href="#">Download Reciepts</a>
+          <a class="nav-link" href="/receipt">Download Reciepts</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="#">My Installments</a>
@@ -33,7 +34,7 @@ function Header() {
       </ul>
    <div className="d-flex gap-3">
    <button className="btn-main-dark-outline">Paymnts</button>
-   <button className="btn-main-orange">Create Account</button>
+   <Link to='/register' className="btn-main-orange">Create Account</Link>
    </div>
     </div>
   </div>
