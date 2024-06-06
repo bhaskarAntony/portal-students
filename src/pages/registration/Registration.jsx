@@ -20,7 +20,7 @@ const Registration = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.post('http://localhost:5000/api/student/register', formData);
+      const response = await axios.post('https://student-portal-backend-1.onrender.com/api/student/register', formData);
       alert('Registration successful');
     } catch (error) {
       console.error('Error:', error);

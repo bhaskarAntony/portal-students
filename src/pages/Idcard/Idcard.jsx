@@ -34,7 +34,7 @@ const IDCard = () => {
   };
 
   const generateHandler = ()=>{
-    axios.get(`http://localhost:5000/api/admin/receipt/${formstudentId}`)
+    axios.get(`https://student-portal-backend-1.onrender.com/api/admin/receipt/${formstudentId}`)
     .then((responce)=>{
         alert('success')
         console.log(responce);
@@ -45,7 +45,7 @@ const IDCard = () => {
         console.log(error);
         alert('error')
     })
-    alert(formstudentId)
+    alert(formstudentId);
   }
 
   return (

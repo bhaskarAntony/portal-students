@@ -32,7 +32,7 @@ const ReceiptDownload = () => {
 
   const handleFetch = async () => {
     try {
-      const response = await axios.get(`http://localhost:5000/api/admin/receipt/${studentId}`);
+      const response = await axios.get(`https://student-portal-backend-1.onrender.com/api/admin/receipt/${studentId}`);
       setData(response.data);
     } catch (error) {
       console.error('Error:', error);

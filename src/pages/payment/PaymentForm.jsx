@@ -20,7 +20,7 @@ const PaymentForm = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.post('http://localhost:5000/api/student/payment', formData);
+      const response = await axios.post('https://student-portal-backend-1.onrender.com/api/student/payment', formData);
       alert('Payment request submitted');
     } catch (error) {
       console.error('Error:', error);
