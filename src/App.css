@@ -1,38 +1,69 @@
-.App {
-  text-align: center;
+:root{
+  --primary-color:rgb(255, 71, 2);
+  --white-color:#fff;
+  --dark-color:rgb(9, 9, 11);
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.btn-main-dark, .btn-main-orange, .btn-main-dark-outline{
+  border: none;
+  padding: 10px 20px;
+  border-radius: 100px;
+  font-size: 1.2rem;
+  word-wrap: nowrap;
+  white-space: nowrap;
+
+}
+.btn-main-dark{
+  color: var(--white-color);
+  background: var(--dark-color);
+}
+.btn-main-orange{
+  color: var(--white-color);
+  background: var(--primary-color);
+}
+.btn-main-dark-outline{
+  border: 2px solid var(--dark-color);
+  background-color: transparent;
+}
+.btn-main-dark-outline:hover{
+  background: var(--dark-color);
+  color: #fff;
+}
+.btn-main-orange:hover, .btn-main-dark:hover{
+  opacity: 0.5;
+}
+.bg-light-orange{
+  background-color: rgb(255, 233, 225);
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+table tr th{
+  background-color: rgb(255, 71, 2);
+  border: 1px solid #fff;
+  font-size: 1.3rem;
+  padding: 15px;
+  color: #fff;
+}
+table tr td{
+  border: 1px solid #ccc;
+  padding: 15px;
+  font-size: 1.2rem;
+}
+.text-main{
+  color: rgb(255, 71, 2);
+}
+.form-check-input[type="radio"]{
+  width: 4rem !important;
+  height: 2rem !important;
+  cursor: pointer;
+}
+.form-check-input[type="checkbox"]{
+  width: 1.6rem !important;
+  height: 1.6rem !important;
+  cursor: pointer;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
 
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.form-check-input:checked{
+  background-color: rgb(255, 71, 2) !important;
+  border-color: rgb(255, 71, 2) !important;
 }
