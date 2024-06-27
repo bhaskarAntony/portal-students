@@ -30,7 +30,7 @@ const IDCard = () => {
       });
   }, [id]);
 
-  const { name, course, studentId, admissionDate, image } = data;
+  const { name, course, studentId, admisionDate, image } = data;
 
   const handleDownload = () => {
     const node = document.getElementById('id-card');
@@ -86,7 +86,7 @@ const IDCard = () => {
               <h2 style={styles.name}>{name}</h2>
               <p><strong>Course:</strong> {course}</p>
               <p><strong>Student ID:</strong> {studentId}</p>
-              <p><strong>Admission Date:</strong> {formatDate(admissionDate)}</p>
+              <p><strong>Admission Date:</strong> {formatDate(admisionDate)}</p>
               <div style={styles.signatures}>
                 <div>
                   <p>Director's Signature</p>
