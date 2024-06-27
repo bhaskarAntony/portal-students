@@ -8,18 +8,17 @@ import Header from './components/Recipt/header/Header';
 import Home from './pages/home/Home';
 import IdCard from './pages/Idcard/Idcard';
 
-
 function App() {
   return (
     <Router>
       <Header/>
       <div className="App">
         <Routes>
-          <Route path="/" element={<Home />} />
+          <Route path="/" element={<Home/>} />
           <Route path="/register" element={<Registration />} />
           <Route path="/payment" element={<PaymentForm />} />
           <Route path="/receipt" element={<ReceiptDownload />} />
-          <Route path="/id_card" element={<IdCard />} />
+          <Route path="/id_card/:id" element={<IdCard />} />
         </Routes>
       </div>
     </Router>

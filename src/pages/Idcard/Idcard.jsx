@@ -1,97 +1,107 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { toPng } from 'html-to-image';
 import { saveAs } from 'file-saver';
+import { useParams } from 'react-router-dom';
 import axios from 'axios';
 
-const data = {
-    username:"bhaskar",
-    course:'fullstack',
-    studentId:'Bp83673673',
-    adminisiondate:'9-27-2024',
-    image:''
-}
 const IDCard = () => {
-
+  const { id } = useParams();
   const [isData, setIsData] = useState(false);
-  const [data, setdata] = useState({
-    name:"yourname",
-    course:'course',
-    studentId:'studentID',
-    adminisiondate:'9-27-2024',
-    image:''
-  })
-  const [formstudentId, setFormStudentId] = useState(null)
-  const { name, course, studentId, adminisiondate, image } = data;
+  const [data, setData] = useState({
+    name: 'yourname',
+    course: 'course',
+    studentId: 'studentID',
+    admissionDate: '9-27-2024',
+    image: '',
+  });
+
+  const imgRef = useRef();
+
+  useEffect(() => {
+    axios.get(`https://student-portal-backend-1.onrender.com/card/${id}`)
+      .then((response) => {
+        console.log(response);
+        setData(response.data);
+        setIsData(true);
+      })
+      .catch((error) => {
+        console.log(error);
+        alert('error');
+      });
+  }, [id]);
+
+  const { name, course, studentId, admissionDate, image } = data;
 
   const handleDownload = () => {
-    toPng(document.getElementById('id-card'))
-      .then((dataUrl) => {
-        saveAs(dataUrl, 'id-card.png');
-      })
-      .catch((err) => {
-        console.error('oops, something went wrong!', err);
-      });
+    const node = document.getElementById('id-card');
+    
+    if (node) {
+      toPng(node)
+        .then((dataUrl) => {
+          saveAs(dataUrl, 'id-card.png');
+          alert('Id card is downloaded.')
+        })
+        .catch((err) => {
+          console.error('oops, something went wrong!', err);
+          alert('try again later..')
+        });
+    }
   };
 
-  const generateHandler = ()=>{
-    axios.get(`https://student-portal-backend-1.onrender.com/api/admin/receipt/${formstudentId}`)
-    .then((responce)=>{
-        alert('success')
-        console.log(responce);
-        setdata(responce.data);
-        setIsData(true);
-    })
-    .catch((error)=>{
-        console.log(error);
-        alert('error')
-    })
-    alert(formstudentId);
-  }
+  const formatDate = (dateString) => {
+    const date = new Date(dateString);
+    const day = date.getDate();
+    const month = date.getMonth() + 1;
+    const year = date.getFullYear();
+    return `${day}/${month}/${year}`;
+  };
+
+  const handleImageError = (e) => {
+    console.error('Image load error', e);
+  };
 
   return (
     <div className='p-3 p-md-5'>
-        <div className="d-flex justify-content-between gap-3 align-items-center">
-            <span className="fs-4 fw-bold">Generate your ID Card</span>
-            <button className="btn-main-orange">Register now</button>
-        </div>
-        <hr />
-
-        <div className="row">
-            <div className="col-md-5 m-auto">
-                <div className="card p-3 d-flex gap-3 flex-row">
-                    <input type="text" placeholder='Student ID' className="form-control p-2 fs-5" value={formstudentId} onChange={(e)=>setFormStudentId(e.target.value)} />
-                    <button className="btn-main-dark rounded-1" onClick={generateHandler}>Generate</button>
-                </div>
-            </div>
-        </div>
- {
-    isData?(
+      <div className="d-flex justify-content-between gap-3 align-items-center">
+        <span className="fs-4 fw-bold">Generate your ID Card</span>
+        <button className="btn-main-orange">Register now</button>
+      </div>
+      <hr />
+      {isData ? (
         <div className='p-3 d-flex flex-column align-items-center justify-content-center bg-light-orange mt-5 overflow-auto'>
-        <div id="id-card" style={styles.idCard}>
-             <div style={styles.left}>
-               <img src={image || 'https://via.placeholder.com/150'} alt="Student" style={styles.image} />
-             </div>
-             <div style={styles.right}>
-               <h2 style={styles.name}>{name}</h2>
-               <p><strong>Course:</strong> {course}</p>
-               <p><strong>Student ID:</strong> {studentId}</p>
-               <p><strong>Admission Date:</strong> 01-05-2024</p>
-               <div style={styles.signatures}>
-                 <div>
-                   <p>Director's Signature</p>
-                   <div style={styles.signatureLine}></div>
-                 </div>
-                 <div>
-                   <p>Student's Signature</p>
-                   <div style={styles.signatureLine}></div>
-                 </div>
-               </div>
-             </div>
-           </div>
-           <button onClick={handleDownload} className='btn-main-orange mt-4'>Download ID Card</button>
+          <div id="id-card" style={styles.idCard}>
+            <div style={styles.left}>
+              {/* <img
+                ref={imgRef}
+                src={image || 'https://via.placeholder.com/150'}
+                alt="Student"
+                style={styles.image}
+                onLoad={() => console.log('Image loaded')}
+                onError={handleImageError}
+                crossOrigin="anonymous"
+              /> */}
+              <div style={styles.image}></div>
+            </div>
+            <div style={styles.right}>
+              <h2 style={styles.name}>{name}</h2>
+              <p><strong>Course:</strong> {course}</p>
+              <p><strong>Student ID:</strong> {studentId}</p>
+              <p><strong>Admission Date:</strong> {formatDate(admissionDate)}</p>
+              <div style={styles.signatures}>
+                <div>
+                  <p>Director's Signature</p>
+                  <div style={styles.signatureLine}></div>
+                </div>
+                <div>
+                  <p>Student's Signature</p>
+                  <div style={styles.signatureLine}></div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <button onClick={handleDownload} className='btn-main-orange mt-4'>Download ID Card</button>
         </div>
-    ):(null)
- }
+      ) : null}
     </div>
   );
 };
@@ -103,7 +113,7 @@ const styles = {
     width: '450px',
     padding: '10px',
     backgroundColor: '#fff',
-    boxShadow:'0px 0px 10px #ccc'
+    boxShadow: '0px 0px 10px #ccc'
   },
   left: {
     flex: '1',
@@ -116,7 +126,7 @@ const styles = {
   image: {
     width: '100px',
     height: '100px',
-    // borderRadius: '50%',
+    background:'#ccc'
   },
   name: {
     margin: '10px 0',
@@ -130,15 +140,6 @@ const styles = {
     width: '100px',
     borderTop: '1px solid #000',
     marginTop: '10px',
-  },
-  downloadButton: {
-    marginTop: '20px',
-    padding: '10px 20px',
-    backgroundColor: '#007bff',
-    color: '#fff',
-    border: 'none',
-    borderRadius: '5px',
-    cursor: 'pointer',
   },
 };
 
