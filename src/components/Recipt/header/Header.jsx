@@ -7,7 +7,7 @@ function Header() {
     <div className='border border-bottom'>
         <nav class="navbar navbar-expand-lg p-3">
   <div class="container-fluid">
-    <a class="navbar-brand fs-3 text-main fw-bold" href="#">myinfo</a>
+    <a class="navbar-brand fs-3 text-main fw-bold" href="#"><img src="https://bepractical.s3.us-east-2.amazonaws.com/brand-logo.cc6e3cf088a8fd3005b1.jpg" style={{width:'150px'}}/> </a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
@@ -17,17 +17,17 @@ function Header() {
           <a class="nav-link active" aria-current="page" href="/">Home</a>
         </li>
        
+        {/* <li class="nav-item">
+          <a class="nav-link" href="/register">Download Reciepts</a>
+        </li> */}
+        {/* <li class="nav-item">
+          <a class="nav-link" href="/register">My Installments</a>
+        </li> */}
         <li class="nav-item">
-          <a class="nav-link" href="/receipt">Download Reciepts</a>
+          <a class="nav-link" href="/register">Confirm Installments</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#">My Installments</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="/payment">Confirm Installments</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="/id_card">Generate ID Card</a>
+          <a class="nav-link" href="/register">Generate ID Card</a>
         </li>
       
        
