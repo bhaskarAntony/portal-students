@@ -24,7 +24,7 @@ function Header() {
           <a class="nav-link" href="/register">My Installments</a>
         </li> */}
         <li class="nav-item">
-          <a class="nav-link" href="/register">Confirm Installments</a>
+          <a class="nav-link" href="/receipt">Create Receipt</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="/register">Generate ID Card</a>
